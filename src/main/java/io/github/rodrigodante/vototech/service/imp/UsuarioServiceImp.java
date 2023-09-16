@@ -20,6 +20,11 @@ public class UsuarioServiceImp implements UsuarioService {
 
     @Override
     public Usuario salvar(Usuario usuario) {
+        Optional<Usuario> usuarioOptional = usuarioRepository.findByEmail(usuario.getEmail());
+
+        if(!usuarioOptional.isEmpty()){
+            throw new ErroUsuarioException("Email já registrado nno Sistema");
+        }
         return usuarioRepository.save(usuario);
     }
 

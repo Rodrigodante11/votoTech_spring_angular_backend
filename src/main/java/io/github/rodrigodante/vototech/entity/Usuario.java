@@ -26,8 +26,10 @@ public class Usuario {
     private String nome;
 
     @Column(unique = true)
+    @NotEmpty(message = "{campo.email.obrigatorio}")
     private String email;
 
+    @NotEmpty(message = "{campo.senha.obrigatorio}")
     private String senha;
 
     @Column(name = "data_cadastro", updatable = false)
