@@ -12,6 +12,7 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 
+import javax.validation.Valid;
 import java.util.List;
 
 @Controller
@@ -22,7 +23,7 @@ public class UsuarioController {
     private final UsuarioService usuarioService;
 
     @PostMapping
-    public ResponseEntity salvarUsuario(@RequestBody Usuario usuario){
+    public ResponseEntity salvarUsuario(@RequestBody @Valid Usuario usuario){
 
         try{
             usuarioService.salvar(usuario);
