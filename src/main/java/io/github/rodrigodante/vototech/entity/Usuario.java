@@ -6,6 +6,7 @@ import lombok.Data;
 import lombok.NoArgsConstructor;
 
 import javax.persistence.*;
+import javax.validation.constraints.NotEmpty;
 import java.time.LocalDate;
 import com.fasterxml.jackson.annotation.JsonFormat;
 @Entity
@@ -21,11 +22,14 @@ public class Usuario {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
+    @NotEmpty(message = "{campo.nome.obrigatorio}")
     private String nome;
 
     @Column(unique = true)
+    @NotEmpty(message = "{campo.email.obrigatorio}")
     private String email;
 
+    @NotEmpty(message = "{campo.senha.obrigatorio}")
     private String senha;
 
     @Column(name = "data_cadastro", updatable = false)
