@@ -52,7 +52,7 @@ public class UsuarioController {
         }
     }
 
-    @GetMapping("{id}")
+    @GetMapping("/{id}")
     public ResponseEntity obterUsuarioPorId(@PathVariable("id") Long id){
 
         return usuarioService.obterPorId(id)
@@ -61,7 +61,7 @@ public class UsuarioController {
                 )).orElseGet( () -> new ResponseEntity("Usuario Não encontrado", HttpStatus.NOT_FOUND));
     }
 
-    @DeleteMapping("{id}")
+    @DeleteMapping("/{id}")
     public ResponseEntity deletarUsuario(@PathVariable("id") Long id){
 
         return usuarioService.obterPorId(id).map( usuario -> {
